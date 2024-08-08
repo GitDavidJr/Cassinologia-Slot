@@ -21,19 +21,23 @@ class Game:
 
     def verificar(self):
 
+        result_slug = False
+
         count_horizontal = 0
         #verificar horizotal
         for c in self.slots:
             if c[0] == c[1] == c[2]:
                 print(f"horizontal {count_horizontal} ganhou")
-                count_horizontal += 1
+                result_slug = f"horizontal-{count_horizontal}"
+            count_horizontal += 1
 
         count_vertical = 0
         #verificar vertical
         for c in range(3):
             if self.slots[0][c] == self.slots[1][c] == self.slots[2][c]:
                 print(f"vertical {count_horizontal} ganhou")
-                count_vertical += 1
+                result_slug = f"vertical-{count_vertical}"
+            count_vertical += 1
 
 
         #verificar diagonal
@@ -41,7 +45,11 @@ class Game:
         #decendo
         if self.slots[0][0] == self.slots[1][1] == self.slots[2][2]:
             print("diagonal ganhou")
+            result_slug = f"diagonal-t-b"
 
         #subindo
         if self.slots[0][2] == self.slots[1][1] == self.slots[2][0]:
             print("diagonal ganhou")
+            result_slug = f"diagonal-b-t"
+
+        return result_slug
